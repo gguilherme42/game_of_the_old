@@ -8,6 +8,9 @@ def convert_list_to_string(input_list):
     return result
 
 
+def validate_user_win():
+    return True
+
 class Player():
     def __init__(self, name="User 1") -> None:
         self.name = name
@@ -28,7 +31,7 @@ class Player():
         if choice.upper() in 'A1B1C1A2C2B2A3B3C3' and len(choice) == 2:
             self.choices.append(choice)
 
-            if len(self.choices) >= 3 and (valid_user_crescent_diagonal_win() or valid_user_decrescent_diagonal_win()):
+            if len(self.choices) >= 3 and validate_user_win():
                 self.status = "winner"
 
         
