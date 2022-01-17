@@ -29,4 +29,5 @@ def print_hash_table():
     print()
 
 
-print_hash_table()
+if __name__ == "__main__":
+    print_hash_table()
