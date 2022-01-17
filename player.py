@@ -4,6 +4,6 @@ class Player():
         self.choices = []
 
     def add_choice(self, choice: str):
-        if choice.upper() in 'A1B1C1A2C2B2A3B3C3':
+        if choice.upper() in 'A1B1C1A2C2B2A3B3C3' and len(choice) == 2:
             self.choices.append(choice)
         
