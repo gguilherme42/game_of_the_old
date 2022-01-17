@@ -1,2 +1,2 @@
-# game_of_the_old
+# Game of the Old
 Translation: jogo da velha
