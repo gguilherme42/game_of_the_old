@@ -5,7 +5,7 @@ import player
 
 class UserTest(unittest.TestCase):
     
-    def test_when_the_user_inputs_its_out_of_range_then_its_choices_are_empty(self):
+    def test_when_the_user_input_its_out_of_range_then_its_choices_are_empty(self):
         user_1 = player.Player()
         user_1.add_choice('C4')
         
@@ -13,6 +13,16 @@ class UserTest(unittest.TestCase):
             return not(user_1.choices)
 
         self.assertTrue(empty_choices())
+    
+    def test_when_the_user_input_its_not_a_string_with_len_2_then_its_choices_are_empty(self):
+        user_1 = player.Player()
+        user_1.add_choice('C1A')
+        
+        def empty_choices():
+            return not(user_1.choices)
+
+        self.assertTrue(empty_choices())
+        
 
 
 
