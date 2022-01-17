@@ -23,7 +23,7 @@ class UserTest(unittest.TestCase):
 
         self.assertTrue(empty_choices())
     
-    def test_when_the_user_has_five_choices_and__its_a_diagonal_win_than_user_status_should_be_winner(self):
+    def test_when_the_user_has_five_choices_and__its_a_crescent_diagonal_win_than_user_status_should_be_winner(self):
         user_1 = player.Player()
         user_1.add_choice('A1')
         user_1.add_choice('A2')
