@@ -22,6 +22,12 @@ class PlayerTest(unittest.TestCase):
         
         self.assertFalse(self.player_1.choices)
     
+    def test_when_the_player_tries_to_input_the_same_position_then_should_not_add_to_his_choices(self):
+        self.player_1.add_choice('C1')
+        self.player_1.add_choice('C1')
+
+        self.assertTrue(len(self.player_1.choices) == 1)
+    
     def test_when_the_player_has_five_choices_and__its_a_crescent_diagonal_win_then_player_status_should_be_winner(self):
         self.player_1.add_choice('A1')
         self.player_1.add_choice('A2')
