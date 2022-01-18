@@ -4,7 +4,6 @@ import player
 
 
 class UserTest(unittest.TestCase):
-    
     def test_when_the_user_input_its_out_of_range_then_its_choices_are_empty(self):
         user_1 = player.Player()
         user_1.add_choice('C4')
@@ -31,7 +30,7 @@ class UserTest(unittest.TestCase):
         user_1.add_choice('B2')
         user_1.add_choice('C3')
 
-        self.assertTrue(user_1.status == "winner")
+        self.assertEqual(user_1.status, "winner")
         
 
     def test_when_the_user_has_five_choices_and__its_a_decrescent_diagonal_win_than_user_status_should_be_winner(self):
@@ -42,7 +41,7 @@ class UserTest(unittest.TestCase):
         user_1.add_choice('B2')
         user_1.add_choice('C1')
 
-        self.assertTrue(user_1.status == "winner")
+        self.assertEqual(user_1.status, "winner")
         
 
 
