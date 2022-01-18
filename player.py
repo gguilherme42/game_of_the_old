@@ -47,7 +47,7 @@ class Player():
         if validate_player_choice():
             self.choices.append(choice)
 
-            if len(self.choices) >= 3 and validate_player_win():
-                self.status = "winner"
+        if len(self.choices) >= 3:
+            self.status = "winner" if validate_player_win() else None
 
         
