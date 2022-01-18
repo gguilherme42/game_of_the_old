@@ -1,4 +1,3 @@
-
 def convert_list_to_string(input_list):
     result = ""
     for element in input_list:

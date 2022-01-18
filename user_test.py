@@ -48,7 +48,16 @@ class PlayerTest(unittest.TestCase):
         self.player_1.add_choice('B1')
         
         self.assertEqual(self.player_1.status, "winner")
-       
+    
+    def test_when_the_player_has_five_choices_and_its_a_vertical_win_then_player_status_should_be_winner(self):
+        self.player_1.add_choice('C2')
+        self.player_1.add_choice('C1')
+        self.player_1.add_choice('C3')
+        self.player_1.add_choice('A3')
+        self.player_1.add_choice('B1')
+        
+        self.assertEqual(self.player_1.status, "winner")
+
         
 
 
