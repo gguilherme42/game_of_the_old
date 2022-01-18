@@ -7,13 +7,7 @@ def convert_list_to_string(input_list):
         result += element
     return result
 
-def valid_user_diagonal_win(user_choices, is_a_crescent_diagonal: bool):
-    diagonal_pattern = 'A1B2C3' if is_a_crescent_diagonal else 'A3B2C1'
-    
-    result = filter(lambda user_choice: user_choice in diagonal_pattern, sorted(user_choices))
-    result = convert_list_to_string(result)
-    
-    return result == diagonal_pattern
+
 
 def validate_user_win():
     return True
