@@ -22,8 +22,7 @@ def valid_user_decrescent_diagonal_win(user_choices):
     return result == decrescent_pattern
 
 
-def validate_user_win():
-    return True
+
 
 class Player():
     def __init__(self, name="User 1") -> None:
@@ -32,6 +31,8 @@ class Player():
         self.status: str = None
 
     def add_choice(self, choice: str):
+        def validate_user_win():
+            return True
 
         if choice.upper() in 'A1B1C1A2C2B2A3B3C3' and len(choice) == 2:
             self.choices.append(choice)
