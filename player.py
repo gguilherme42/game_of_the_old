@@ -33,11 +33,18 @@ class Player():
     def add_choice(self, choice: str):
         valid_input_options = 'A1B1C1A2C2B2A3B3C3'
 
+        choice = str(choice)
+
+        
+        def validate_player_choice():
+            return choice.upper() in valid_input_options and len(choice) == 2
+        
+        
         def validate_player_win():
             return valid_player_crescent_diagonal_win(self.choices) \
                 or valid_player_decrescent_diagonal_win(self.choices)
 
-        if choice.upper() in valid_input_options and len(choice) == 2:
+        if validate_player_choice():
             self.choices.append(choice)
 
             if len(self.choices) >= 3 and validate_player_win():
