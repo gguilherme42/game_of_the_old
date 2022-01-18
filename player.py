@@ -8,16 +8,16 @@ def convert_list_to_string(input_list):
     return result
 
 
-def valid_user_crescent_diagonal_win(user_choices):
+def valid_player_crescent_diagonal_win(player_choices):
     crescent_pattern = 'A1B2C3' 
-    result = filter(lambda user_choice: user_choice in crescent_pattern, sorted(user_choices))
+    result = filter(lambda player_choice: player_choice in crescent_pattern, sorted(player_choices))
     result = convert_list_to_string(result)
     return result == crescent_pattern
         
 
-def valid_user_decrescent_diagonal_win(user_choices):
+def valid_player_decrescent_diagonal_win(player_choices):
     decrescent_pattern = 'A3B2C1'
-    result = filter(lambda user_choice: user_choice in decrescent_pattern, sorted(user_choices))
+    result = filter(lambda player_choice: player_choice in decrescent_pattern, sorted(player_choices))
     result = convert_list_to_string(result)
     return result == decrescent_pattern
 
@@ -25,7 +25,7 @@ def valid_user_decrescent_diagonal_win(user_choices):
 
 
 class Player():
-    def __init__(self, name="User 1") -> None:
+    def __init__(self, name="player 1") -> None:
         self.name = name
         self.choices = []
         self.status: str = None
@@ -33,14 +33,14 @@ class Player():
     def add_choice(self, choice: str):
         valid_input_options = 'A1B1C1A2C2B2A3B3C3'
 
-        def validate_user_win():
-            return valid_user_crescent_diagonal_win(self.choices) \
-                or valid_user_decrescent_diagonal_win(self.choices)
+        def validate_player_win():
+            return valid_player_crescent_diagonal_win(self.choices) \
+                or valid_player_decrescent_diagonal_win(self.choices)
 
         if choice.upper() in valid_input_options and len(choice) == 2:
             self.choices.append(choice)
 
-            if len(self.choices) >= 3 and validate_user_win():
+            if len(self.choices) >= 3 and validate_player_win():
                 self.status = "winner"
 
         
