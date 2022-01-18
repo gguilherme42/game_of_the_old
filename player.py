@@ -31,10 +31,13 @@ class Player():
         self.status: str = None
 
     def add_choice(self, choice: str):
-        def validate_user_win():
-            return True
+        valid_input_options = 'A1B1C1A2C2B2A3B3C3'
 
-        if choice.upper() in 'A1B1C1A2C2B2A3B3C3' and len(choice) == 2:
+        def validate_user_win():
+            return valid_user_crescent_diagonal_win(self.choices) \
+                or valid_user_decrescent_diagonal_win(self.choices)
+
+        if choice.upper() in valid_input_options and len(choice) == 2:
             self.choices.append(choice)
 
             if len(self.choices) >= 3 and validate_user_win():
