@@ -18,7 +18,7 @@ class PlayerTest(unittest.TestCase):
 
     def test_when_the_player_input_its_not_a_string_then_its_choices_are_empty(self):
         player_1 = player.Player()
-        player_1.add_choice(124)
+        player_1.add_choice(12.4)
         
         self.assertFalse(player_1.choices)
     
