@@ -6,7 +6,6 @@ from player import Player
 class PlayerTest(unittest.TestCase):
     def setUp(self):
         self.player_1 = Player()
-        
 
     def test_when_the_player_input_its_out_of_range_then_its_choices_are_empty(self):
         self.player_1.add_choice('C4')
@@ -48,9 +47,8 @@ class PlayerTest(unittest.TestCase):
         self.player_1.add_choice('A3')
         self.player_1.add_choice('B1')
         
-        print(self.player_1.choices)
-        # self.assertEqual(self.player_1.status, "winner")
-        self.assertEqual("winner", "winner")
+        self.assertEqual(self.player_1.status, "winner")
+       
         
 
 
