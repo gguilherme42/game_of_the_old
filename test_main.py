@@ -30,13 +30,15 @@ class PlayerTest(unittest.TestCase):
         
 
     def test_when_user_adds_a_valid_position(self):
-        user_choice = 'A1'
+        user_choice = 'A3'
         self.user.add_choice(user_choice)
         add_choice_to_hash_talbe(user_choice)
 
-        expected = [['X','-','-'],
-            ['-','-','-'],
-            ['-','-','-']]
+        expected = [
+            # A   B    C
+            ['-','-','-'], # 1
+            ['-','-','-'], # 2
+            ['X','-','-']] # 3
         
         self.assertEqual(hash_table, expected)
 
