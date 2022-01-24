@@ -25,11 +25,10 @@ def add_choice_to_hash_talbe(position: str):
 
 class PlayerTest(unittest.TestCase):
     def setUp(self):
-        self.user = Player()
-    
+        self.user = Player()    
         
 
-    def test_when_user_adds_a_valid_position(self):
+    def test_when_an_user_adds_a_valid_position(self):
         user_choice = 'A3'
         self.user.add_choice(user_choice)
         add_choice_to_hash_talbe(user_choice)
