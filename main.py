@@ -47,6 +47,12 @@ def input_hash_position(player_name: str):
             print("POSIÇÃO INVÁLIDA!")
 
 
+def can_verify_a_winner(player: Player()): 
+    has_it_a_possible_winner = (len(player.choices) >= 3)
+    
+    return has_it_a_possible_winner
+
+
 if __name__ == "__main__":
     user = Player("Guilherme")
     enemy = Player("Enemy", "O")
@@ -58,12 +64,16 @@ if __name__ == "__main__":
         add_choice_to_hash_talbe(user_input, user.marker)
         print_hash_table(HASH_TABLE)
 
+        if can_verify_a_winner(user) and user.status == "winner":
+            print(f"Você ganhou, {user.name}!")
+            break
+
         enemy_input = input_hash_position(enemy.name)
         enemy.add_choice(enemy_input)
         add_choice_to_hash_talbe(enemy_input, enemy.marker)
         print_hash_table(HASH_TABLE)
 
-        if user.status == "winner":
-            print(f"Você ganhou, {user.name}!")
+        if can_verify_a_winner(enemy) and enemy.status == "winner":
+            print(f"Você ganhou, {enemy.name}!")
             break
-        break
+        
