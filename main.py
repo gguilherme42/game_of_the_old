@@ -1,5 +1,6 @@
 from print_table import print_hash_table
 from player import Player
+import os
 
 HASH_TABLE = [['-','-','-'],
             ['-','-','-'],
@@ -62,6 +63,7 @@ if __name__ == "__main__":
         user_input = input_hash_position(user.name)
         user.add_choice(user_input)
         add_choice_to_hash_talbe(user_input, user.marker)
+        os.system("clear")
         print_hash_table(HASH_TABLE)
 
         if can_verify_a_winner(user) and user.status == "winner":
@@ -71,6 +73,7 @@ if __name__ == "__main__":
         enemy_input = input_hash_position(enemy.name)
         enemy.add_choice(enemy_input)
         add_choice_to_hash_talbe(enemy_input, enemy.marker)
+        os.system("clear")
         print_hash_table(HASH_TABLE)
 
         if can_verify_a_winner(enemy) and enemy.status == "winner":
