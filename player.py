@@ -46,7 +46,10 @@ class Player():
 
         
         def validate_player_choice():
-            return choice.upper() in valid_input_options and len(choice) == 2
+            is_not_repeated = lambda  : choice.upper() not in ''.join(self.choices)
+            is_a_valid_input = lambda : choice.upper() in valid_input_options and len(choice) == 2
+            
+            return  is_not_repeated() and is_a_valid_input()
         
         if validate_player_choice():
             self.choices.append(choice)
