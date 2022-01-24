@@ -20,7 +20,10 @@ def convert_line_number_to_valid_index_line_number(line_number: str):
 def add_choice_to_hash_talbe(position: str, player_marker: str):
     column = convert_column_letter_to_number_column(position[0])
     line = convert_line_number_to_valid_index_line_number(position[1])
-    hash_table[line][column] = player_marker
+    
+    position_is_not_ocupated = hash_table[line][column] == "-"
+    if position_is_not_ocupated:
+        hash_table[line][column] = player_marker
 
 
 class PlayerTest(unittest.TestCase):
@@ -49,7 +52,7 @@ class PlayerTest(unittest.TestCase):
         self.assertEqual(hash_table, expected)
 
 
-    def test_when_user_and__enemy_add_their_choices(self):
+    def test_when_user_and_enemy_add_their_choices(self):
         user_choice = 'A3'
         enemy_choice = 'B2'
         
@@ -63,6 +66,24 @@ class PlayerTest(unittest.TestCase):
             # A   B    C
             ['-','-','-'], # 1
             ['-','O','-'], # 2
+            ['X','-','-']] # 3
+        
+        self.assertEqual(hash_table, expected)
+
+    def test_when_enemy_tries_an_ocupated_position(self):
+        user_choice = 'A3'
+        enemy_choice = 'A3'
+        
+        self.user.add_choice(user_choice)
+        add_choice_to_hash_talbe(user_choice, self.user.marker)
+        
+        self.enemy.add_choice(enemy_choice)
+        add_choice_to_hash_talbe(enemy_choice, self.enemy.marker)
+
+        expected = [
+            # A   B    C
+            ['-','-','-'], # 1
+            ['-','-','-'], # 2
             ['X','-','-']] # 3
         
         self.assertEqual(hash_table, expected)
