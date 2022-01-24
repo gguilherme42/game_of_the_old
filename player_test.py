@@ -6,11 +6,14 @@ from player import Player
 class PlayerTest(unittest.TestCase):
     def setUp(self):
         self.player_1 = Player()
+        
 
-    def test_when_the_player_input_its_out_of_range_then_its_choices_are_empty(self):
+    def test_when_the_players_input_its_out_of_range(self):
+        previous_len = len(self.player_1.choices)
         self.player_1.add_choice('C4')
+        last_len = len(self.player_1.choices)
     
-        self.assertFalse(self.player_1.choices)
+        self.assertEqual(last_len, previous_len)
     
     def test_when_the_player_input_its_a_string_with_len_bigger_than_2_then_its_choices_are_empty(self):
         self.player_1.add_choice('C1A')
@@ -22,15 +25,17 @@ class PlayerTest(unittest.TestCase):
         
         self.assertFalse(self.player_1.choices)
     
-    def test_when_the_player_tries_to_input_the_same_position_then_should_not_add_to_his_choices(self):
+    def test_when_the_player_tries_to_input_the_same_position(self):
         self.player_1.add_choice('C1')
+        previos_len = len(self.player_1.choices)
         self.player_1.add_choice('C1')
+        last_len = len(self.player_1.choices)
 
-        self.assertTrue(len(self.player_1.choices) == 1)
+        self.assertEqual(last_len, previos_len)
     
-    def test_when_the_player_has_five_choices_and__its_a_crescent_diagonal_win_then_player_status_should_be_winner(self):
+    def test_crescent_diagonal_win(self):
         self.player_1.add_choice('A1')
-        self.player_1.add_choice('A2')
+        self.player_1.add_choice('A3')
         self.player_1.add_choice('B1')
         self.player_1.add_choice('B2')
         self.player_1.add_choice('C3')
@@ -38,7 +43,7 @@ class PlayerTest(unittest.TestCase):
         self.assertEqual(self.player_1.status, "winner")
         
 
-    def test_when_the_player_has_five_choices_and__its_a_decrescent_diagonal_win_then_player_status_should_be_winner(self):
+    def test_decrescent_diagonal_win(self):
         self.player_1.add_choice('A1')
         self.player_1.add_choice('A3')
         self.player_1.add_choice('B1')
@@ -47,7 +52,7 @@ class PlayerTest(unittest.TestCase):
 
         self.assertEqual(self.player_1.status, "winner")
 
-    def test_when_the_player_has_four_choices_and_its_a_horizontal_win_then_player_status_should_be_winner(self):
+    def test_horizontal_win(self):
         self.player_1.add_choice('A1')
         self.player_1.add_choice('C1')
         self.player_1.add_choice('A3')
@@ -55,7 +60,7 @@ class PlayerTest(unittest.TestCase):
         
         self.assertEqual(self.player_1.status, "winner")
     
-    def test_when_the_player_has_five_choices_and_its_a_vertical_win_then_player_status_should_be_winner(self):
+    def test_vertical_win(self):
         self.player_1.add_choice('C2')
         self.player_1.add_choice('C1')
         self.player_1.add_choice('C3')
