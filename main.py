@@ -6,6 +6,8 @@ HASH_TABLE = [['-','-','-'],
             ['-','-','-'],
             ['-','-','-']]
 
+ERROR_MSG = "\033[1;1;31mPOSIÇÃO INVÁLIDA\033[0;0m"
+
 def convert_column_letter_to_number_column(column_letter: str):
     column_converter = {'A': 0, 'B': 1, 'C': 2}
 
@@ -32,31 +34,34 @@ def input_hash_position(player_name: str):
     import sys
     input_pattern = 'A1B1C1A2C2B2A3B3C3'
 
+
     while True:
         try:
-            result = str(input(f"{player_name} -> Posição: ")).strip().upper()
+            result = str(input(f"\033[1;1;37m{player_name} ->\033[0;0m Posição: ")).strip().upper()
             if result in input_pattern:
 
                 if is_position_not_ocupated(result):
                     return result
         except IndexError:
-            print("POSIÇÃO INVÁLIDA!")
+            print(ERROR_MSG)
         
         except KeyboardInterrupt:
             sys.exit()
         else:
-            print("POSIÇÃO INVÁLIDA!")
+            print(ERROR_MSG)
 
+def print_winner_msg(player_name: str):
+    print(f"\033[1;92mVocê ganhou, \033[1;1;92m{player_name}!\033[0;0m")
 
 def can_verify_a_winner(player: Player()): 
     has_it_a_possible_winner = (len(player.choices) >= 3)
     
     return has_it_a_possible_winner
 
-
 if __name__ == "__main__":
-    user = Player("Guilherme")
-    enemy = Player("Enemy", "O")
+    os.system("clear")
+    user = Player("Player", "\033[1;1;93mX\033[0;0m")
+    enemy = Player("Enemy", "\033[1;1;94mO\033[0;0m")
     print_hash_table(HASH_TABLE)
     while True:
 
@@ -67,7 +72,7 @@ if __name__ == "__main__":
         print_hash_table(HASH_TABLE)
 
         if can_verify_a_winner(user) and user.status == "winner":
-            print(f"Você ganhou, {user.name}!")
+            print_winner_msg(user.name)
             break
 
         enemy_input = input_hash_position(enemy.name)
@@ -77,6 +82,6 @@ if __name__ == "__main__":
         print_hash_table(HASH_TABLE)
 
         if can_verify_a_winner(enemy) and enemy.status == "winner":
-            print(f"Você ganhou, {enemy.name}!")
+            print_winner_msg(enemy.name)
             break
         

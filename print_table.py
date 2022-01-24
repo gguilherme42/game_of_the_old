@@ -1,11 +1,10 @@
 def print_hash_table_columns():
     print()
-    print('    A   B   C')
+    print('\033[1;1;97m    A   B   C\033[0;0m')
     print()
 
-
 def print_hash_table_line(line_number: int):
-    print(f'{line_number}   ', end="")
+    print(f'\033[1;1;97m{line_number}   \033[0;0m', end="")
 
 
 def print_hash_table(hash_table: list[list[str]]):
