@@ -88,8 +88,6 @@ class PlayerTest(unittest.TestCase):
         
         self.assertEqual(hash_table, expected)
 
-        
-
 
 if __name__ == "__main__":
     unittest.main()
