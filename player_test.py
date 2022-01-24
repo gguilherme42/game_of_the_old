@@ -15,12 +15,12 @@ class PlayerTest(unittest.TestCase):
     
         self.assertEqual(last_len, previous_len)
     
-    def test_when_the_player_input_its_a_string_with_len_bigger_than_2_then_its_choices_are_empty(self):
+    def test_when_the_player_input_its_a_string_with_len_bigger_than_2(self):
         self.player_1.add_choice('C1A')
         
         self.assertFalse(self.player_1.choices)
 
-    def test_when_the_player_input_its_not_a_string_then_its_choices_are_empty(self):
+    def test_when_the_player_input_its_not_a_string(self):
         self.player_1.add_choice(12.4)
         
         self.assertFalse(self.player_1.choices)
