@@ -34,10 +34,11 @@ def validate_if_the_player_won(player_choices):
 
 
 class Player():
-    def __init__(self, name="player 1") -> None:
+    def __init__(self, name="player 1", marker="X") -> None:
         self.name = name
         self.choices = []
         self.status: str = None
+        self.marker = marker
 
     def add_choice(self, choice: str):
         valid_input_options = 'A1B1C1A2C2B2A3B3C3'
